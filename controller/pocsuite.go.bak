@@ -1,0 +1,247 @@
+package controller
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+
+	"github.com/e421083458/golang_common/lib"
+	"github.com/gin-gonic/gin"
+	"github.com/wh1t3zer/Hawkeye/dao"
+	"github.com/wh1t3zer/Hawkeye/dto"
+	"github.com/wh1t3zer/Hawkeye/middleware"
+	"github.com/wh1t3zer/Hawkeye/utils"
+)
+
+// PocuiteController ...
+type PocuiteController struct{}
+
+// PocsuiteRegister ...
+func PocsuiteRegister(group *gin.RouterGroup) {
+	pocCtl := &PocuiteController{}
+	group.GET("/plugin", pocCtl.PluginDetail)
+	group.POST("/plugin", pocCtl.AddPlugin)
+	group.PATCH("/plugin", pocCtl.PluginWriteFile)
+
+	group.GET("/tasks", pocCtl.PocTasks)     // 任务列表
+	group.GET("/task", nil)                  // 任务详情
+	group.POST("/task", nil)                 // 新建任务
+	group.PUT("/task", nil)                  // 修改任务
+	group.DELETE("/task", pocCtl.PocTaskDel) //删除任务
+	group.PATCH("/task", nil)                // 执行任务
+}
+
+// PluginDetail godoc
+// @Summary 插件详情
+// @Description 插件详情
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/plugin
+// @Accept  json
+// @Produce  json
+// @Param id query string true "插件ID"
+// @Success 200 {object} middleware.Response{data=dao.PocPlugin} "success"
+// @Router /pocsuite/plugin [get]
+func (pocCtl *PocuiteController) PluginDetail(c *gin.Context) {
+	params := &dto.PublicIDInput{}
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+
+	search := &dao.PocPlugin{ID: int(params.ID)}
+	detail, err := search.Find(c, lib.GORMDefaultPool, search)
+	if err != nil {
+		middleware.ResponseError(c, 2002, err)
+		return
+	}
+	middleware.ResponseSuccess(c, detail)
+}
+
+// AddPlugin godoc
+// @Summary 添加插件
+// @Description 添加插件
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/plugin [post]
+// @Accept  json
+// @Produce  json
+// @Param body body dto.PocPluginAddInput true "body"
+// @Success 200 {object} middleware.Response{data=string} "success"
+// @Router /pocsuite/plugin [post]
+func (pocCtl *PocuiteController) AddPlugin(c *gin.Context) {
+	params := &dto.PocPluginAddInput{}
+	if err := params.GetValidParams(c); err != nil {
+		if strings.Contains(fmt.Sprintf("%v", err), "parsing time") {
+			middleware.ResponseError(c, 2001, fmt.Errorf("%v, try input value %v", err, "2016-01-02T15:04:05Z"))
+			return
+		}
+		middleware.ResponseError(c, 2002, err)
+		return
+	}
+
+	info := &dao.PocPlugin{
+		VulID:          params.VulID,
+		VulName:        params.VulName,
+		VulType:        params.VulType,
+		VulDate:        params.VulDate,
+		Version:        params.Version,
+		Author:         params.Author,
+		AppPowerLink:   params.AppPowerLink,
+		AppName:        params.AppName,
+		AppVersion:     params.AppVersion,
+		Desc:           params.Desc,
+		Cnnvd:          params.Cnnvd,
+		CveID:          params.CveID,
+		Rank:           params.Rank,
+		DefaultPorts:   params.DefaultPorts,
+		DefaultService: params.DefaultService,
+		Content:        params.Content,
+	}
+	if err := info.Save(c, lib.GORMDefaultPool); err != nil {
+		middleware.ResponseError(c, 2003, err)
+		return
+	}
+	middleware.ResponseSuccess(c, "Add plugin Successfully!")
+}
+
+// PluginWriteFile godoc
+// @Summary 插件写入文件
+// @Description 插件写入文件
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/plugin [patch]
+// @Accept  json
+// @Produce  json
+// @Param id query string true "插件ID"
+// @Success 200 {object} middleware.Response{data=string} "success"
+// @Router /pocsuite/plugin [patch]
+func (pocCtl *PocuiteController) PluginWriteFile(c *gin.Context) {
+	params := &dto.PublicIDInput{}
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+
+	// 1. 当前没有该文件
+	filename := fmt.Sprintf("./%vid_%v.py", utils.PocPluginFilePath, params.ID)
+	if bl, _ := utils.PathExists(filename); !bl {
+		fmt.Println("当前没有该文件")
+		search := &dao.PocPlugin{ID: int(params.ID)}
+		detail, err := search.Find(c, lib.GORMDefaultPool, search)
+		if err != nil {
+			middleware.ResponseError(c, 2002, err)
+			return
+		}
+
+		file, err := os.OpenFile(filename, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0666)
+		if err != nil {
+			middleware.ResponseError(c, 2003, err)
+			return
+		}
+		defer file.Close()
+		writer := bufio.NewWriter(file)
+		writer.WriteString(detail.Content)
+		writer.Flush()
+	}
+
+	middleware.ResponseSuccess(c, "write file Successfully!")
+}
+
+// PocTasks godoc
+// @Summary 任务列表
+// @Description 任务列表
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/tasks
+// @Accept  json
+// @Produce  json
+// @Param info query string false "关键词"
+// @Param limit query int true "每页个数"
+// @Param page query int true "当前页数"
+// @Success 200 {object} middleware.Response{data=dto.PocTaskListOutput} "success"
+// @Router /pocsuite/tasks [get]
+func (pocCtl *PocuiteController) PocTasks(c *gin.Context) {
+	params := &dto.PublicListInput{}
+
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+
+	search := &dao.PocTask{}
+	tasks, total, err := search.PageList(c, lib.GORMDefaultPool, params)
+	if err != nil {
+		middleware.ResponseError(c, 2002, err)
+		return
+	}
+	//格式化输出信息
+	outList := []dto.PocTaskOutput{} //这个结构体是面向前端接口的
+	for _, item := range tasks {
+		outItem := dto.PocTaskOutput{
+			ID: item.ID, AssetID: item.AssetID, PortinfoID: item.PortinfoID, PluginList: item.PluginList,
+			TargetList: item.TargetList, TaskName: item.TaskName, Recursion: item.Recursion,
+			UpdatedAt: item.UpdatedAt, CreatedAt: item.CreatedAt, IsDelete: item.IsDelete, Status: item.Status,
+		}
+		outList = append(outList, outItem)
+	}
+	out := &dto.PocTaskListOutput{Total: total, List: outList}
+	middleware.ResponseSuccess(c, out)
+}
+
+// PocTaskAdd godoc
+// @Summary 新增任务
+// @Description 新增任务
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/task[post]
+// @Accept  json
+// @Produce  json
+// @Param id query string true "任务ID"
+// @Success 200 {object} middleware.Response{data=string} "success"
+// @Router /pocsuite/task [post]
+func (pocCtl *PocuiteController) PocTaskAdd(c *gin.Context) {
+	params := &dto.PublicIDInput{}
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+	search := &dao.PocTask{ID: int(params.ID)}
+	info, err := search.Find(c, lib.GORMDefaultPool, search)
+	if err != nil {
+		middleware.ResponseError(c, 2002, err)
+		return
+	}
+	info.IsDelete = 1
+	if err := info.Save(c, lib.GORMDefaultPool); err != nil {
+		middleware.ResponseError(c, 2003, err)
+		return
+	}
+	middleware.ResponseSuccess(c, "success")
+}
+
+// PocTaskDel godoc
+// @Summary 删除任务
+// @Description 删除任务
+// @Tags Poc漏洞扫描
+// @ID /pocsuite/task
+// @Accept  json
+// @Produce  json
+// @Param id query string true "任务ID"
+// @Success 200 {object} middleware.Response{data=string} "success"
+// @Router /pocsuite/task [delete]
+func (pocCtl *PocuiteController) PocTaskDel(c *gin.Context) {
+	params := &dto.PublicIDInput{}
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+	search := &dao.PocTask{ID: int(params.ID)}
+	info, err := search.Find(c, lib.GORMDefaultPool, search)
+	if err != nil {
+		middleware.ResponseError(c, 2002, err)
+		return
+	}
+	info.IsDelete = 1
+	if err := info.Save(c, lib.GORMDefaultPool); err != nil {
+		middleware.ResponseError(c, 2003, err)
+		return
+	}
+	middleware.ResponseSuccess(c, "success")
+}

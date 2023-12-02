@@ -1,0 +1,12 @@
+# this is redis config file
+[list]
+    [list.default]
+        proxy_list = ["172.31.50.249:6379"]
+        max_active = 100
+        max_idle = 100
+        down_grade = false
+        db = 0
+        # password = "123"
+        # conn_timeout = 1
+        # read_timeout = 2
+        # write_timeout = 3

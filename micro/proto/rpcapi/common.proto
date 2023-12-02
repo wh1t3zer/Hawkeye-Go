@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package rpcapi;
+
+import "github.com/wh1t3zer/Hawkeye/micro/proto/model/common.proto";
+
+service Victim {
+    rpc Communication (model.Request) returns (model.Response);
+}

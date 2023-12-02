@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package model;
+option go_package = "model";
+
+message Request {
+    string cmd = 1;
+}
+
+message Response {
+    string msg = 1;
+}

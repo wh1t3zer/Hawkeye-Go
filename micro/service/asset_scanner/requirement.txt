@@ -1,0 +1,6 @@
+python-consul==1.1.0
+pocsuite3==1.6.6
+python3-nmap==1.4.9
+python-nmap-0.6.1
+qqwry-py3==1.2.1
+bs4==0.0.1

@@ -1,0 +1,1765 @@
+definitions:
+  dao.PocPlugin:
+    properties:
+      app_name:
+        type: string
+      app_powerLink:
+        type: string
+      app_version:
+        type: string
+      author:
+        type: string
+      cnnvd:
+        type: string
+      content:
+        type: string
+      create_at:
+        type: string
+      cve_id:
+        type: string
+      default_ports:
+        type: string
+      default_service:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      rank:
+        type: integer
+      update_at:
+        type: string
+      version:
+        type: string
+      vul_date:
+        type: string
+      vul_id:
+        type: string
+      vul_name:
+        type: string
+      vul_type:
+        type: string
+    type: object
+  dao.TaskInfo:
+    properties:
+      auth_scan:
+        type: integer
+      create_at:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      name:
+        type: string
+      percent:
+        type: integer
+      poc_scan:
+        type: integer
+      progress:
+        type: string
+      recursion:
+        type: integer
+      rule_id:
+        type: integer
+      status:
+        type: string
+      target_list:
+        type: string
+      trap_scan:
+        type: integer
+      update_at:
+        type: string
+      web_scan:
+        type: integer
+    type: object
+  dto.AdminInfoOutput:
+    properties:
+      avatar:
+        type: string
+      id:
+        type: integer
+      introduction:
+        type: string
+      login_time:
+        type: string
+      name:
+        type: string
+      roles:
+        items:
+          type: string
+        type: array
+    type: object
+  dto.AdminLoginInput:
+    properties:
+      password:
+        description: 密码
+        example: "123456"
+        type: string
+      username:
+        description: 管理员用户名
+        example: admin
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.AdminLoginOutput:
+    properties:
+      token:
+        description: token
+        example: token
+        type: string
+    type: object
+  dto.AssetAddInput:
+    properties:
+      area:
+        type: string
+      gps:
+        type: string
+      ip:
+        type: string
+      isp:
+        type: string
+      os:
+        type: string
+      task_id:
+        type: integer
+      vendor:
+        type: string
+    required:
+    - ip
+    - task_id
+    type: object
+  dto.AssetDetailOutput:
+    properties:
+      asset_info:
+        $ref: '#/definitions/dto.AssetInfoCard'
+        type: object
+      box1:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box2:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      trap_info:
+        $ref: '#/definitions/dto.TrapInfo'
+        type: object
+      vul_list:
+        $ref: '#/definitions/dto.VulTableBoxCard'
+        type: object
+      web_list:
+        $ref: '#/definitions/dto.WebTableBoxCard'
+        type: object
+    type: object
+  dto.AssetInfoCard:
+    properties:
+      area:
+        type: string
+      create_at:
+        type: string
+      gps:
+        type: string
+      id:
+        type: integer
+      image:
+        description: 卡片头像
+        type: string
+      ip:
+        type: string
+      isp:
+        type: string
+      os:
+        type: string
+      target:
+        type: string
+      task_id:
+        type: integer
+      title:
+        description: 卡片标题
+        type: string
+      type:
+        description: 卡片绘图类型 pie line tatle
+        type: string
+      vendor:
+        type: string
+    type: object
+  dto.AssetInfoOutput:
+    properties:
+      area:
+        type: string
+      create_at:
+        type: string
+      gps:
+        type: string
+      id:
+        type: integer
+      ip:
+        type: string
+      isp:
+        type: string
+      os:
+        type: string
+      port_array:
+        items:
+          type: string
+        type: array
+      task_id:
+        type: integer
+      task_name:
+        type: string
+      task_status:
+        type: string
+      vendor:
+        type: string
+      vul_count:
+        type: integer
+    type: object
+  dto.AssetUpdateInput:
+    properties:
+      area:
+        type: string
+      gps:
+        type: string
+      id:
+        type: integer
+      ip:
+        type: string
+      isp:
+        type: string
+      os:
+        type: string
+      task_id:
+        type: integer
+      vendor:
+        type: string
+    required:
+    - id
+    type: object
+  dto.ChangePwdInput:
+    properties:
+      password:
+        description: 密码
+        example: "123456"
+        type: string
+    required:
+    - password
+    type: object
+  dto.ChartBoxCard:
+    properties:
+      image:
+        description: 卡片头像
+        type: string
+      series:
+        description: 数据源
+        items:
+          $ref: '#/definitions/dto.ChartSeries'
+        type: array
+      title:
+        description: 卡片标题
+        type: string
+      type:
+        description: 卡片绘图类型 pie line tatle
+        type: string
+    type: object
+  dto.ChartSeries:
+    properties:
+      name:
+        type: string
+      value:
+        type: integer
+    type: object
+  dto.DashboardOutput:
+    properties:
+      box1:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box2:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box3:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box4:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box5:
+        $ref: '#/definitions/dto.TableBoxCard'
+        type: object
+      box6:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      panel_data:
+        $ref: '#/definitions/dto.PanelGroupData'
+        type: object
+    type: object
+  dto.PanelGroupData:
+    properties:
+      asset_count:
+        type: integer
+      resource_count:
+        type: integer
+      service_count:
+        type: integer
+      vul_count:
+        type: integer
+    type: object
+  dto.PocPluginAddInput:
+    properties:
+      app_name:
+        type: string
+      app_powerLink:
+        type: string
+      app_version:
+        type: string
+      author:
+        type: string
+      cnnvd:
+        type: string
+      content:
+        type: string
+      cve_id:
+        type: string
+      default_ports:
+        type: string
+      default_service:
+        type: string
+      desc:
+        type: string
+      rank:
+        type: integer
+      version:
+        type: string
+      vul_date:
+        description: "2016-01-02"
+        type: string
+      vul_id:
+        type: string
+      vul_name:
+        type: string
+      vul_type:
+        type: string
+    required:
+    - app_name
+    - app_version
+    - author
+    - content
+    - default_ports
+    - default_service
+    - desc
+    - vul_id
+    - vul_name
+    - vul_type
+    type: object
+  dto.PocPluginInfoOutput:
+    properties:
+      app_name:
+        type: string
+      app_powerLink:
+        type: string
+      app_version:
+        type: string
+      author:
+        type: string
+      cnnvd:
+        type: string
+      content:
+        type: string
+      create_at:
+        type: string
+      cve_id:
+        type: string
+      default_ports:
+        type: string
+      default_service:
+        type: string
+      desc:
+        type: string
+      id:
+        description: id
+        type: integer
+      is_delete:
+        type: integer
+      rank:
+        type: integer
+      update_at:
+        type: string
+      version:
+        type: string
+      vul_date:
+        type: string
+      vul_id:
+        type: string
+      vul_name:
+        type: string
+      vul_type:
+        type: string
+    type: object
+  dto.PocPluginListOutput:
+    properties:
+      list:
+        description: 列表
+        items:
+          $ref: '#/definitions/dto.PocPluginInfoOutput'
+        type: array
+      total:
+        description: 总数
+        type: integer
+    type: object
+  dto.TableBoxCard:
+    properties:
+      image:
+        description: 卡片头像
+        type: string
+      series:
+        description: 数据源
+        items:
+          $ref: '#/definitions/dto.VulInfoOutput'
+        type: array
+      title:
+        description: 卡片标题
+        type: string
+      type:
+        description: 卡片绘图类型 pie line tatle
+        type: string
+    type: object
+  dto.TaskAddInput:
+    properties:
+      auth_scan:
+        type: integer
+      name:
+        type: string
+      poc_scan:
+        type: integer
+      recursion:
+        type: integer
+      rule_id:
+        type: integer
+      target_list:
+        type: string
+      trap_scan:
+        type: integer
+      web_scan:
+        type: integer
+    required:
+    - name
+    - target_list
+    type: object
+  dto.TaskDashboardOutput:
+    properties:
+      box1:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box2:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box3:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box4:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      box5:
+        $ref: '#/definitions/dto.TableBoxCard'
+        type: object
+      box6:
+        $ref: '#/definitions/dto.ChartBoxCard'
+        type: object
+      panel_data:
+        $ref: '#/definitions/dto.PanelGroupData'
+        type: object
+      percent:
+        type: integer
+      status:
+        type: string
+    type: object
+  dto.TaskInfoOutput:
+    properties:
+      asset_num:
+        type: integer
+      auth_scan:
+        type: integer
+      create_at:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      name:
+        type: string
+      percent:
+        type: integer
+      poc_scan:
+        type: integer
+      progress:
+        type: string
+      recursion:
+        type: integer
+      rule_id:
+        type: integer
+      status:
+        type: string
+      target_list:
+        type: string
+      trap_scan:
+        type: integer
+      update_at:
+        type: string
+      web_scan:
+        type: integer
+    type: object
+  dto.TaskListOutput:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/dto.TaskInfoOutput'
+        type: array
+      total:
+        type: integer
+    type: object
+  dto.TaskUpdateInput:
+    properties:
+      auth_scan:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      poc_scan:
+        type: integer
+      recursion:
+        type: integer
+      rule_id:
+        type: integer
+      target_list:
+        type: string
+      trap_scan:
+        type: integer
+      web_scan:
+        type: integer
+    required:
+    - id
+    - name
+    - target_list
+    type: object
+  dto.TokensInput:
+    properties:
+      grant_type:
+        description: 授权类型
+        example: client_credentials
+        type: string
+      scope:
+        description: 权限范围
+        example: read_write
+        type: string
+    required:
+    - grant_type
+    - scope
+    type: object
+  dto.TokensOutput:
+    properties:
+      access_token:
+        description: access_token
+        type: string
+      expires_in:
+        description: 超时时间
+        type: integer
+      scope:
+        description: 权限范围
+        type: string
+      token_type:
+        description: 类型
+        type: string
+    type: object
+  dto.TrapInfo:
+    properties:
+      name:
+        type: string
+      verify:
+        type: string
+    type: object
+  dto.TrapPluginAddInput:
+    properties:
+      app_name:
+        type: string
+      author:
+        type: string
+      content:
+        type: string
+      desc:
+        type: string
+      honeypot:
+        type: string
+      name:
+        type: string
+      protocol:
+        type: string
+      trap_id:
+        type: string
+    required:
+    - app_name
+    - author
+    - content
+    - desc
+    - honeypot
+    - name
+    - protocol
+    - trap_id
+    type: object
+  dto.TrapPluginListOutput:
+    properties:
+      list:
+        description: 列表
+        items:
+          $ref: '#/definitions/dto.TrapPluginOutput'
+        type: array
+      total:
+        description: 总数
+        type: integer
+    type: object
+  dto.TrapPluginOutput:
+    properties:
+      app_name:
+        type: string
+      author:
+        type: string
+      content:
+        type: string
+      create_at:
+        type: string
+      desc:
+        type: string
+      honeypot:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      name:
+        type: string
+      protocol:
+        type: string
+      trap_id:
+        type: string
+      update_at:
+        type: string
+    type: object
+  dto.TrapPluginUpdateInput:
+    properties:
+      app_name:
+        type: string
+      author:
+        type: string
+      content:
+        type: string
+      desc:
+        type: string
+      honeypot:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      protocol:
+        type: string
+      trap_id:
+        type: string
+    required:
+    - app_name
+    - author
+    - content
+    - desc
+    - honeypot
+    - id
+    - name
+    - protocol
+    - trap_id
+    type: object
+  dto.TrojanItemOutput:
+    properties:
+      asset_id:
+        type: integer
+      asset_name:
+        type: string
+      create_at:
+        type: string
+      line:
+        description: 1是容器、穿透, 2是主机,直通
+        type: integer
+      port_id:
+        type: integer
+      port_name:
+        type: string
+      real_server:
+        type: string
+    type: object
+  dto.TrojanListOutput:
+    properties:
+      list:
+        description: 列表
+        items:
+          $ref: '#/definitions/dto.TrojanItemOutput'
+        type: array
+      total:
+        description: 总数
+        type: integer
+    type: object
+  dto.VulInfoOutput:
+    properties:
+      app_name:
+        type: string
+      asset:
+        type: string
+      asset_id:
+        type: integer
+      create_at:
+        type: string
+      exploit_payload:
+        type: string
+      exploit_result:
+        type: string
+      exploit_url:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      line:
+        type: integer
+      plugin_id:
+        type: integer
+      port_id:
+        type: integer
+      trojan_payload:
+        type: string
+      trojan_result:
+        type: string
+      trojan_url:
+        type: string
+      verify_payload:
+        type: string
+      verify_result:
+        type: string
+      verify_url:
+        type: string
+      vul_name:
+        type: string
+      vul_type:
+        type: string
+      webshell_payload:
+        type: string
+      webshell_result:
+        type: string
+      webshell_url:
+        type: string
+    type: object
+  dto.VulListOutput:
+    properties:
+      list:
+        description: 列表
+        items:
+          $ref: '#/definitions/dto.VulInfoOutput'
+        type: array
+      total:
+        description: 总数
+        type: integer
+    type: object
+  dto.VulTableBoxCard:
+    properties:
+      image:
+        description: 卡片头像
+        type: string
+      series:
+        description: 数据源
+        items:
+          $ref: '#/definitions/dto.VulInfoOutput'
+        type: array
+      title:
+        description: 卡片标题
+        type: string
+      type:
+        description: 卡片绘图类型 pie line tatle
+        type: string
+    type: object
+  dto.WebInfoOutput:
+    properties:
+      content_type:
+        type: string
+      id:
+        type: integer
+      login_list:
+        type: string
+      port_id:
+        type: integer
+      resource_list:
+        type: string
+      route_list:
+        type: string
+      server:
+        type: string
+      start_url:
+        type: string
+      sub_domain:
+        type: string
+      title:
+        type: string
+      upload_list:
+        type: string
+    type: object
+  dto.WebTableBoxCard:
+    properties:
+      image:
+        description: 卡片头像
+        type: string
+      series:
+        description: 数据源
+        items:
+          $ref: '#/definitions/dto.WebInfoOutput'
+        type: array
+      title:
+        description: 卡片标题
+        type: string
+      type:
+        description: 卡片绘图类型 pie line tatle
+        type: string
+    type: object
+  middleware.Response:
+    properties:
+      data:
+        type: object
+      errmsg:
+        type: string
+      errno:
+        type: integer
+      stack:
+        type: object
+      trace_id:
+        type: object
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /admin/admin_info:
+    get:
+      consumes:
+      - application/json
+      description: 管理员信息
+      operationId: /admin/admin_info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.AdminInfoOutput'
+              type: object
+      summary: 管理员信息
+      tags:
+      - 管理员接口
+  /admin/change_pwd:
+    post:
+      consumes:
+      - application/json
+      description: 修改密码
+      operationId: /admin/change_pwd
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ChangePwdInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 修改密码
+      tags:
+      - 管理员接口
+  /admin_login/login:
+    post:
+      consumes:
+      - application/json
+      description: 管理员登陆
+      operationId: /admin_login/login
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AdminLoginInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.AdminLoginOutput'
+              type: object
+      summary: 管理员登陆
+      tags:
+      - 管理员接口
+  /admin_login/logout:
+    get:
+      consumes:
+      - application/json
+      description: 管理员退出
+      operationId: /admin_login/logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 管理员退出
+      tags:
+      - 管理员接口
+  /asset/add:
+    post:
+      consumes:
+      - application/json
+      description: 资产添加
+      operationId: /asset/add
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AssetAddInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 资产添加
+      tags:
+      - 资产管理
+  /asset/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 资产删除
+      operationId: /asset/delete
+      parameters:
+      - description: 资产ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 资产删除
+      tags:
+      - 资产管理
+  /asset/detail:
+    get:
+      consumes:
+      - application/json
+      description: 资产详情
+      operationId: /asset/detail
+      parameters:
+      - description: 资产ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.AssetDetailOutput'
+              type: object
+      summary: 资产详情
+      tags:
+      - 资产管理
+  /asset/info:
+    get:
+      consumes:
+      - application/json
+      description: 资产信息
+      operationId: /asset/info
+      parameters:
+      - description: 资产ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.AssetInfoOutput'
+              type: object
+      summary: 资产信息
+      tags:
+      - 资产管理
+  /asset/list:
+    get:
+      consumes:
+      - application/json
+      description: 资产列表
+      operationId: /asset/list
+      parameters:
+      - description: 模糊查询
+        in: query
+        name: info
+        type: string
+      - description: 每页条数
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TaskListOutput'
+              type: object
+      summary: 资产列表
+      tags:
+      - 资产管理
+  /asset/update:
+    put:
+      consumes:
+      - application/json
+      description: 资产更新
+      operationId: /asset/update
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.AssetUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 资产更新
+      tags:
+      - 资产管理
+  /dashboard/all:
+    get:
+      consumes:
+      - application/json
+      description: 所有数据统计(实时)
+      operationId: /dashboard/all
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.DashboardOutput'
+              type: object
+      summary: 所有数据统计(实时)
+      tags:
+      - 首页大盘
+  /oauth/toekns:
+    post:
+      consumes:
+      - application/json
+      description: 获取TOKEN
+      operationId: /oauth/toekns
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TokensInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TokensOutput'
+              type: object
+      summary: 获取TOKEN
+      tags:
+      - OAUTH
+  /task/add:
+    post:
+      consumes:
+      - application/json
+      description: 任务添加
+      operationId: /task/add
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TaskAddInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 任务添加
+      tags:
+      - 任务管理
+  /task/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 任务删除
+      operationId: /task/delete
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 任务删除
+      tags:
+      - 任务管理
+  /task/detail:
+    get:
+      consumes:
+      - application/json
+      description: 任务详情(静态视图)
+      operationId: /task/detail
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TaskDashboardOutput'
+              type: object
+      summary: 任务详情(静态视图)
+      tags:
+      - 任务管理
+  /task/exec:
+    patch:
+      consumes:
+      - application/json
+      description: 执行任务
+      operationId: /task/exec
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 执行任务
+      tags:
+      - 任务管理
+  /task/info:
+    get:
+      consumes:
+      - application/json
+      description: 任务详情
+      operationId: /task/info
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.TaskInfo'
+              type: object
+      summary: 任务详情
+      tags:
+      - 任务管理
+  /task/list:
+    get:
+      consumes:
+      - application/json
+      description: 任务列表
+      operationId: /task/list
+      parameters:
+      - description: 模糊查询
+        in: query
+        name: info
+        type: string
+      - description: 每页条数
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TaskListOutput'
+              type: object
+      summary: 任务列表
+      tags:
+      - 任务管理
+  /task/stat:
+    get:
+      consumes:
+      - application/json
+      description: 任务视图
+      operationId: /task/stat/get
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TaskDashboardOutput'
+              type: object
+      summary: 任务视图
+      tags:
+      - 任务管理
+  /task/update:
+    put:
+      consumes:
+      - application/json
+      description: 任务更新
+      operationId: /task/update
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TaskUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 任务更新
+      tags:
+      - 任务管理
+  /trap/plugin/add:
+    post:
+      consumes:
+      - application/json
+      description: 插件添加
+      operationId: /trap/plugin/add
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TrapPluginAddInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 插件添加
+      tags:
+      - 蜜罐识别
+  /trap/plugin/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 插件删除
+      operationId: /trap/plugin/delete
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 插件删除
+      tags:
+      - 蜜罐识别
+  /trap/plugin/info:
+    get:
+      consumes:
+      - application/json
+      description: 插件信息
+      operationId: /trap/plugin/info
+      parameters:
+      - description: 任务ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.TaskInfo'
+              type: object
+      summary: 插件信息
+      tags:
+      - 蜜罐识别
+  /trap/plugin/list:
+    get:
+      consumes:
+      - application/json
+      description: 插件列表
+      operationId: /trap/plugin/list
+      parameters:
+      - description: 模糊查询
+        in: query
+        name: info
+        type: string
+      - description: 每页条数
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TrapPluginListOutput'
+              type: object
+      summary: 插件列表
+      tags:
+      - 蜜罐识别
+  /trap/plugin/update:
+    put:
+      consumes:
+      - application/json
+      description: 插件更新
+      operationId: /trap/plugin/update
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TrapPluginUpdateInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 插件更新
+      tags:
+      - 蜜罐识别
+  /trojan/echo:
+    get:
+      consumes:
+      - application/json
+      description: 木马通信
+      operationId: /trojan/echo
+      parameters:
+      - description: 资产ID
+        in: query
+        name: id
+        required: true
+        type: integer
+      - description: 资产名
+        in: query
+        name: name
+        required: true
+        type: integer
+      - description: 线路ID
+        in: query
+        name: line
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: WS即时通
+      tags:
+      - 浮标管理
+  /trojan/service/list:
+    get:
+      consumes:
+      - application/json
+      description: 获取在线木马服务列表
+      operationId: /trojan/service/list
+      parameters:
+      - description: 关键词
+        in: query
+        name: info
+        type: string
+      - description: 每页个数
+        in: query
+        name: limit
+        required: true
+        type: integer
+      - description: 当前页数
+        in: query
+        name: page
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.TrojanListOutput'
+              type: object
+      summary: 获取在线木马服务列表
+      tags:
+      - 浮标管理
+  /vul/list:
+    get:
+      consumes:
+      - application/json
+      description: 漏洞列表
+      operationId: /vul/list
+      parameters:
+      - description: 模糊查询
+        in: query
+        name: info
+        type: string
+      - description: 每页条数
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.VulListOutput'
+              type: object
+      summary: 漏洞列表
+      tags:
+      - 漏洞管理
+  /vul/plugin/add:
+    post:
+      consumes:
+      - application/json
+      description: 插件添加
+      operationId: /vul/plugin/add
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PocPluginAddInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 插件添加
+      tags:
+      - 漏洞管理
+  /vul/plugin/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 插件删除
+      operationId: /vul/plugin/delete
+      parameters:
+      - description: 插件ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: 插件删除
+      tags:
+      - 漏洞管理
+  /vul/plugin/info:
+    get:
+      consumes:
+      - application/json
+      description: 插件详情
+      operationId: /vul/plugin/info
+      parameters:
+      - description: 插件ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.PocPlugin'
+              type: object
+      summary: 插件详情
+      tags:
+      - 漏洞管理
+  /vul/plugin/list:
+    get:
+      consumes:
+      - application/json
+      description: 插件列表
+      operationId: /vul/plugin/list
+      parameters:
+      - description: 模糊查询
+        in: query
+        name: info
+        type: string
+      - description: 每页条数
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/middleware.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/dto.PocPluginListOutput'
+              type: object
+      summary: 插件列表
+      tags:
+      - 漏洞管理
+swagger: "2.0"

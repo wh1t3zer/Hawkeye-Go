@@ -1,0 +1,24 @@
+syntax = "proto3"; // 指定proto版本
+package grpc;   // 指定默认包名
+
+// 指定golang包名
+option go_package = "grpc";
+
+// 定义算术服务
+service Arith {
+    // 定义相加方法
+    rpc XiangJia(ArithRequest) returns (ArithResponse) {}
+    // 定义相减方法
+    rpc XiangJian(ArithRequest) returns (ArithResponse) {}
+}
+
+// ArithRequest 请求结构
+message ArithRequest {
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+
+// ArithResponse 响应结构
+message ArithResponse {
+    int32 result = 1;
+}

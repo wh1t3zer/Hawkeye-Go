@@ -1,0 +1,167 @@
+syntax = "proto3"; // 指定proto版本
+package grpc;   // 指定默认包名
+
+// 指定golang包名
+option go_package = "grpc";
+
+
+
+// 定义域名类服务
+service Domain {
+    // 定义域名解析方法, 资产需要解析IP存表
+    rpc Resolv(ResolvRequest) returns (ResolvResponse){}
+    // 定义域名查询、子域爆破方法
+    rpc Analysis(AnlsRequest) returns (AnlsResponse){}
+}
+message ResolvRequest {
+    string domain = 1;
+}
+message ResolvResponse {
+    string ip = 1;
+}
+message AnlsRequest {
+    string domain = 1;
+    repeated string domain_dict = 2;
+}
+message AnlsResponse {
+    string registrar = 1;
+    string register_date = 2;
+    string name_server = 3;
+    string domain_server = 4;
+    string status = 5;
+    string subdomain_list = 6;
+}
+
+
+
+// 定义主机信息识别服务
+service Host {    
+    // 定义IP信息查询方法
+    rpc Location(LocRequest) returns (LocResponse) {}
+    // 定义主机存活方法
+    rpc Alive(AlvRequest) returns (AlvResponse){}
+    // 定义服务识别方法
+    rpc Detail(DetlRequest) returns (DetlResponse){}
+}
+message LocRequest {
+    string ip = 1;
+}
+message LocResponse {
+    string area = 1;
+    string isp = 2;
+    string gps = 3;
+}
+
+message AlvRequest {
+    string net = 1;
+}
+message AlvResponse {
+    repeated string hosts = 1;
+}
+
+message DetlRequest {
+    string ip = 1;
+    repeated string ports = 2;
+}
+message SrvInfo {
+    string port = 1;
+    string name = 2;
+    string state = 3;
+    string product = 4;
+    string version = 5;
+    string extrainfo = 6;
+    string conf = 7;
+    string cpe = 8;
+    
+}
+message DetlResponse {
+    string os = 1;
+    string vendor = 2;
+    repeated SrvInfo array = 3;
+}
+
+
+// 定义Web扫描服务
+service WebScrap {
+    // 定义Web爬虫
+    rpc Spider(SpiRequest) returns (SpiResponse) {}
+    // 定义主机存活方法
+    // rpc Selenium(SelRequest) returns (SelResponse){}
+}
+message SpiRequest {
+    string host = 1;  //domain or ip
+    int32 port = 2;
+}
+message SpiResponse {
+    string start_url = 1;
+    string title = 2;
+    string server = 3;
+    string content_type = 4;
+    repeated string login_list = 5;
+    repeated string upload_list = 6;
+    repeated string sub_domain = 7;
+    repeated string route_list = 8;
+    repeated string resource_list = 9;
+}
+
+
+// 定义扫描服务
+service Vul {    
+    // 定义漏洞验证方法
+    rpc Verify(PocRequest) returns (PocResponse) {}
+    // 定义权限爆破方法
+    rpc Hydra(AuthRequest) returns (AuthResponse) {}
+    // 定义蜜罐识别方法
+    rpc Trap(TrapRequest) returns (TrapResponse) {}
+}
+message PocRequest {
+    bool exploit = 1;
+    string target = 2;
+    string command = 3;
+    string asset_id = 4;
+    string vul_id = 5;
+    string poc_content = 6; 
+}
+message PocResponse {
+    string verify_url = 1;
+    string verify_payload = 2;
+    string verify_result = 3;
+    string exploit_url = 4;
+    string exploit_payload = 5;
+    string exploit_result = 6;
+    string webshell_url = 7;
+    string webshell_payload = 8;
+    string webshell_result = 9;
+    string trojan_url = 10;
+    string trojan_payload = 11;
+    string trojan_result = 12;
+}
+message AuthRequest {
+    string service = 1;
+    string args = 2;
+    repeated string target_list = 3;
+    repeated string username_list = 4;
+    repeated string password_list = 5;
+}
+message AuthInfo {
+    string target = 1;
+    string service =2;
+    string username = 3;
+    string password = 4;
+    string command = 5;
+}
+message AuthResponse {
+    repeated AuthInfo array = 1;
+}
+
+message TrapRequest {
+    repeated string target_list = 1;
+    string trap_id = 2;
+    string plugin_text = 3;
+}
+message VerifyInfo {
+    string verify = 1;
+}
+message TrapResponse {
+    repeated VerifyInfo array = 1;
+}

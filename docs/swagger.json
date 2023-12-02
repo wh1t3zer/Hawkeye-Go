@@ -1,0 +1,2766 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/admin/admin_info": {
+            "get": {
+                "description": "管理员信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员接口"
+                ],
+                "summary": "管理员信息",
+                "operationId": "/admin/admin_info",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.AdminInfoOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/change_pwd": {
+            "post": {
+                "description": "修改密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员接口"
+                ],
+                "summary": "修改密码",
+                "operationId": "/admin/change_pwd",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.ChangePwdInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/admin_login/login": {
+            "post": {
+                "description": "管理员登陆",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员接口"
+                ],
+                "summary": "管理员登陆",
+                "operationId": "/admin_login/login",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AdminLoginInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.AdminLoginOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/admin_login/logout": {
+            "get": {
+                "description": "管理员退出",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员接口"
+                ],
+                "summary": "管理员退出",
+                "operationId": "/admin_login/logout",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/add": {
+            "post": {
+                "description": "资产添加",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产添加",
+                "operationId": "/asset/add",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AssetAddInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/delete": {
+            "delete": {
+                "description": "资产删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产删除",
+                "operationId": "/asset/delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "资产ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/detail": {
+            "get": {
+                "description": "资产详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产详情",
+                "operationId": "/asset/detail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "资产ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.AssetDetailOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/info": {
+            "get": {
+                "description": "资产信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产信息",
+                "operationId": "/asset/info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "资产ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.AssetInfoOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/list": {
+            "get": {
+                "description": "资产列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产列表",
+                "operationId": "/asset/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "模糊查询",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "每页条数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TaskListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/asset/update": {
+            "put": {
+                "description": "资产更新",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "资产管理"
+                ],
+                "summary": "资产更新",
+                "operationId": "/asset/update",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.AssetUpdateInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/dashboard/all": {
+            "get": {
+                "description": "所有数据统计(实时)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "首页大盘"
+                ],
+                "summary": "所有数据统计(实时)",
+                "operationId": "/dashboard/all",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.DashboardOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/oauth/toekns": {
+            "post": {
+                "description": "获取TOKEN",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OAUTH"
+                ],
+                "summary": "获取TOKEN",
+                "operationId": "/oauth/toekns",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TokensInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TokensOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/add": {
+            "post": {
+                "description": "任务添加",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务添加",
+                "operationId": "/task/add",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TaskAddInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/delete": {
+            "delete": {
+                "description": "任务删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务删除",
+                "operationId": "/task/delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/detail": {
+            "get": {
+                "description": "任务详情(静态视图)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务详情(静态视图)",
+                "operationId": "/task/detail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TaskDashboardOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/exec": {
+            "patch": {
+                "description": "执行任务",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "执行任务",
+                "operationId": "/task/exec",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/info": {
+            "get": {
+                "description": "任务详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务详情",
+                "operationId": "/task/info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.TaskInfo"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/list": {
+            "get": {
+                "description": "任务列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务列表",
+                "operationId": "/task/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "模糊查询",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "每页条数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TaskListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/stat": {
+            "get": {
+                "description": "任务视图",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务视图",
+                "operationId": "/task/stat/get",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TaskDashboardOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/task/update": {
+            "put": {
+                "description": "任务更新",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务管理"
+                ],
+                "summary": "任务更新",
+                "operationId": "/task/update",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TaskUpdateInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trap/plugin/add": {
+            "post": {
+                "description": "插件添加",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "蜜罐识别"
+                ],
+                "summary": "插件添加",
+                "operationId": "/trap/plugin/add",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TrapPluginAddInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trap/plugin/delete": {
+            "delete": {
+                "description": "插件删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "蜜罐识别"
+                ],
+                "summary": "插件删除",
+                "operationId": "/trap/plugin/delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trap/plugin/info": {
+            "get": {
+                "description": "插件信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "蜜罐识别"
+                ],
+                "summary": "插件信息",
+                "operationId": "/trap/plugin/info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "任务ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.TaskInfo"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trap/plugin/list": {
+            "get": {
+                "description": "插件列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "蜜罐识别"
+                ],
+                "summary": "插件列表",
+                "operationId": "/trap/plugin/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "模糊查询",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "每页条数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TrapPluginListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trap/plugin/update": {
+            "put": {
+                "description": "插件更新",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "蜜罐识别"
+                ],
+                "summary": "插件更新",
+                "operationId": "/trap/plugin/update",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.TrapPluginUpdateInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trojan/echo": {
+            "get": {
+                "description": "木马通信",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "浮标管理"
+                ],
+                "summary": "WS即时通",
+                "operationId": "/trojan/echo",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "资产ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "资产名",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "线路ID",
+                        "name": "line",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/trojan/service/list": {
+            "get": {
+                "description": "获取在线木马服务列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "浮标管理"
+                ],
+                "summary": "获取在线木马服务列表",
+                "operationId": "/trojan/service/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "关键词",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页个数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "当前页数",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.TrojanListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/vul/list": {
+            "get": {
+                "description": "漏洞列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "漏洞管理"
+                ],
+                "summary": "漏洞列表",
+                "operationId": "/vul/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "模糊查询",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "每页条数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.VulListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/vul/plugin/add": {
+            "post": {
+                "description": "插件添加",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "漏洞管理"
+                ],
+                "summary": "插件添加",
+                "operationId": "/vul/plugin/add",
+                "parameters": [
+                    {
+                        "description": "body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PocPluginAddInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/vul/plugin/delete": {
+            "delete": {
+                "description": "插件删除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "漏洞管理"
+                ],
+                "summary": "插件删除",
+                "operationId": "/vul/plugin/delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "插件ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/vul/plugin/info": {
+            "get": {
+                "description": "插件详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "漏洞管理"
+                ],
+                "summary": "插件详情",
+                "operationId": "/vul/plugin/info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "插件ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.PocPlugin"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/vul/plugin/list": {
+            "get": {
+                "description": "插件列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "漏洞管理"
+                ],
+                "summary": "插件列表",
+                "operationId": "/vul/plugin/list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "模糊查询",
+                        "name": "info",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "每页条数",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/middleware.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dto.PocPluginListOutput"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dao.PocPlugin": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "app_powerLink": {
+                    "type": "string"
+                },
+                "app_version": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "cnnvd": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "cve_id": {
+                    "type": "string"
+                },
+                "default_ports": {
+                    "type": "string"
+                },
+                "default_service": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "update_at": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "vul_date": {
+                    "type": "string"
+                },
+                "vul_id": {
+                    "type": "string"
+                },
+                "vul_name": {
+                    "type": "string"
+                },
+                "vul_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dao.TaskInfo": {
+            "type": "object",
+            "properties": {
+                "auth_scan": {
+                    "type": "integer"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "percent": {
+                    "type": "integer"
+                },
+                "poc_scan": {
+                    "type": "integer"
+                },
+                "progress": {
+                    "type": "string"
+                },
+                "recursion": {
+                    "type": "integer"
+                },
+                "rule_id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "target_list": {
+                    "type": "string"
+                },
+                "trap_scan": {
+                    "type": "integer"
+                },
+                "update_at": {
+                    "type": "string"
+                },
+                "web_scan": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.AdminInfoOutput": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "introduction": {
+                    "type": "string"
+                },
+                "login_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dto.AdminLoginInput": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "description": "密码",
+                    "type": "string",
+                    "example": "123456"
+                },
+                "username": {
+                    "description": "管理员用户名",
+                    "type": "string",
+                    "example": "admin"
+                }
+            }
+        },
+        "dto.AdminLoginOutput": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "description": "token",
+                    "type": "string",
+                    "example": "token"
+                }
+            }
+        },
+        "dto.AssetAddInput": {
+            "type": "object",
+            "required": [
+                "ip",
+                "task_id"
+            ],
+            "properties": {
+                "area": {
+                    "type": "string"
+                },
+                "gps": {
+                    "type": "string"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "isp": {
+                    "type": "string"
+                },
+                "os": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "integer"
+                },
+                "vendor": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.AssetDetailOutput": {
+            "type": "object",
+            "properties": {
+                "asset_info": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.AssetInfoCard"
+                },
+                "box1": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box2": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "trap_info": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.TrapInfo"
+                },
+                "vul_list": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.VulTableBoxCard"
+                },
+                "web_list": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.WebTableBoxCard"
+                }
+            }
+        },
+        "dto.AssetInfoCard": {
+            "type": "object",
+            "properties": {
+                "area": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "gps": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image": {
+                    "description": "卡片头像",
+                    "type": "string"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "isp": {
+                    "type": "string"
+                },
+                "os": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "卡片标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "卡片绘图类型 pie line tatle",
+                    "type": "string"
+                },
+                "vendor": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.AssetInfoOutput": {
+            "type": "object",
+            "properties": {
+                "area": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "gps": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "isp": {
+                    "type": "string"
+                },
+                "os": {
+                    "type": "string"
+                },
+                "port_array": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "task_id": {
+                    "type": "integer"
+                },
+                "task_name": {
+                    "type": "string"
+                },
+                "task_status": {
+                    "type": "string"
+                },
+                "vendor": {
+                    "type": "string"
+                },
+                "vul_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.AssetUpdateInput": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "area": {
+                    "type": "string"
+                },
+                "gps": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "isp": {
+                    "type": "string"
+                },
+                "os": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "integer"
+                },
+                "vendor": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.ChangePwdInput": {
+            "type": "object",
+            "required": [
+                "password"
+            ],
+            "properties": {
+                "password": {
+                    "description": "密码",
+                    "type": "string",
+                    "example": "123456"
+                }
+            }
+        },
+        "dto.ChartBoxCard": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "卡片头像",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "数据源",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.ChartSeries"
+                    }
+                },
+                "title": {
+                    "description": "卡片标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "卡片绘图类型 pie line tatle",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.ChartSeries": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.DashboardOutput": {
+            "type": "object",
+            "properties": {
+                "box1": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box2": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box3": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box4": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box5": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.TableBoxCard"
+                },
+                "box6": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "panel_data": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.PanelGroupData"
+                }
+            }
+        },
+        "dto.PanelGroupData": {
+            "type": "object",
+            "properties": {
+                "asset_count": {
+                    "type": "integer"
+                },
+                "resource_count": {
+                    "type": "integer"
+                },
+                "service_count": {
+                    "type": "integer"
+                },
+                "vul_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.PocPluginAddInput": {
+            "type": "object",
+            "required": [
+                "app_name",
+                "app_version",
+                "author",
+                "content",
+                "default_ports",
+                "default_service",
+                "desc",
+                "vul_id",
+                "vul_name",
+                "vul_type"
+            ],
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "app_powerLink": {
+                    "type": "string"
+                },
+                "app_version": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "cnnvd": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "cve_id": {
+                    "type": "string"
+                },
+                "default_ports": {
+                    "type": "string"
+                },
+                "default_service": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "vul_date": {
+                    "description": "2016-01-02",
+                    "type": "string"
+                },
+                "vul_id": {
+                    "type": "string"
+                },
+                "vul_name": {
+                    "type": "string"
+                },
+                "vul_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PocPluginInfoOutput": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "app_powerLink": {
+                    "type": "string"
+                },
+                "app_version": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "cnnvd": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "cve_id": {
+                    "type": "string"
+                },
+                "default_ports": {
+                    "type": "string"
+                },
+                "default_service": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "id",
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "update_at": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                },
+                "vul_date": {
+                    "type": "string"
+                },
+                "vul_id": {
+                    "type": "string"
+                },
+                "vul_name": {
+                    "type": "string"
+                },
+                "vul_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PocPluginListOutput": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.PocPluginInfoOutput"
+                    }
+                },
+                "total": {
+                    "description": "总数",
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TableBoxCard": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "卡片头像",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "数据源",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.VulInfoOutput"
+                    }
+                },
+                "title": {
+                    "description": "卡片标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "卡片绘图类型 pie line tatle",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TaskAddInput": {
+            "type": "object",
+            "required": [
+                "name",
+                "target_list"
+            ],
+            "properties": {
+                "auth_scan": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "poc_scan": {
+                    "type": "integer"
+                },
+                "recursion": {
+                    "type": "integer"
+                },
+                "rule_id": {
+                    "type": "integer"
+                },
+                "target_list": {
+                    "type": "string"
+                },
+                "trap_scan": {
+                    "type": "integer"
+                },
+                "web_scan": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TaskDashboardOutput": {
+            "type": "object",
+            "properties": {
+                "box1": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box2": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box3": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box4": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "box5": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.TableBoxCard"
+                },
+                "box6": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.ChartBoxCard"
+                },
+                "panel_data": {
+                    "type": "object",
+                    "$ref": "#/definitions/dto.PanelGroupData"
+                },
+                "percent": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TaskInfoOutput": {
+            "type": "object",
+            "properties": {
+                "asset_num": {
+                    "type": "integer"
+                },
+                "auth_scan": {
+                    "type": "integer"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "percent": {
+                    "type": "integer"
+                },
+                "poc_scan": {
+                    "type": "integer"
+                },
+                "progress": {
+                    "type": "string"
+                },
+                "recursion": {
+                    "type": "integer"
+                },
+                "rule_id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "target_list": {
+                    "type": "string"
+                },
+                "trap_scan": {
+                    "type": "integer"
+                },
+                "update_at": {
+                    "type": "string"
+                },
+                "web_scan": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TaskListOutput": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.TaskInfoOutput"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TaskUpdateInput": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "target_list"
+            ],
+            "properties": {
+                "auth_scan": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "poc_scan": {
+                    "type": "integer"
+                },
+                "recursion": {
+                    "type": "integer"
+                },
+                "rule_id": {
+                    "type": "integer"
+                },
+                "target_list": {
+                    "type": "string"
+                },
+                "trap_scan": {
+                    "type": "integer"
+                },
+                "web_scan": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TokensInput": {
+            "type": "object",
+            "required": [
+                "grant_type",
+                "scope"
+            ],
+            "properties": {
+                "grant_type": {
+                    "description": "授权类型",
+                    "type": "string",
+                    "example": "client_credentials"
+                },
+                "scope": {
+                    "description": "权限范围",
+                    "type": "string",
+                    "example": "read_write"
+                }
+            }
+        },
+        "dto.TokensOutput": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "description": "access_token",
+                    "type": "string"
+                },
+                "expires_in": {
+                    "description": "超时时间",
+                    "type": "integer"
+                },
+                "scope": {
+                    "description": "权限范围",
+                    "type": "string"
+                },
+                "token_type": {
+                    "description": "类型",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrapInfo": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "verify": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrapPluginAddInput": {
+            "type": "object",
+            "required": [
+                "app_name",
+                "author",
+                "content",
+                "desc",
+                "honeypot",
+                "name",
+                "protocol",
+                "trap_id"
+            ],
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "honeypot": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                },
+                "trap_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrapPluginListOutput": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.TrapPluginOutput"
+                    }
+                },
+                "total": {
+                    "description": "总数",
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.TrapPluginOutput": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "honeypot": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                },
+                "trap_id": {
+                    "type": "string"
+                },
+                "update_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrapPluginUpdateInput": {
+            "type": "object",
+            "required": [
+                "app_name",
+                "author",
+                "content",
+                "desc",
+                "honeypot",
+                "id",
+                "name",
+                "protocol",
+                "trap_id"
+            ],
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "honeypot": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "protocol": {
+                    "type": "string"
+                },
+                "trap_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrojanItemOutput": {
+            "type": "object",
+            "properties": {
+                "asset_id": {
+                    "type": "integer"
+                },
+                "asset_name": {
+                    "type": "string"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "line": {
+                    "description": "1是容器、穿透, 2是主机,直通",
+                    "type": "integer"
+                },
+                "port_id": {
+                    "type": "integer"
+                },
+                "port_name": {
+                    "type": "string"
+                },
+                "real_server": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TrojanListOutput": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.TrojanItemOutput"
+                    }
+                },
+                "total": {
+                    "description": "总数",
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.VulInfoOutput": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "asset": {
+                    "type": "string"
+                },
+                "asset_id": {
+                    "type": "integer"
+                },
+                "create_at": {
+                    "type": "string"
+                },
+                "exploit_payload": {
+                    "type": "string"
+                },
+                "exploit_result": {
+                    "type": "string"
+                },
+                "exploit_url": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "line": {
+                    "type": "integer"
+                },
+                "plugin_id": {
+                    "type": "integer"
+                },
+                "port_id": {
+                    "type": "integer"
+                },
+                "trojan_payload": {
+                    "type": "string"
+                },
+                "trojan_result": {
+                    "type": "string"
+                },
+                "trojan_url": {
+                    "type": "string"
+                },
+                "verify_payload": {
+                    "type": "string"
+                },
+                "verify_result": {
+                    "type": "string"
+                },
+                "verify_url": {
+                    "type": "string"
+                },
+                "vul_name": {
+                    "type": "string"
+                },
+                "vul_type": {
+                    "type": "string"
+                },
+                "webshell_payload": {
+                    "type": "string"
+                },
+                "webshell_result": {
+                    "type": "string"
+                },
+                "webshell_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.VulListOutput": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.VulInfoOutput"
+                    }
+                },
+                "total": {
+                    "description": "总数",
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.VulTableBoxCard": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "卡片头像",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "数据源",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.VulInfoOutput"
+                    }
+                },
+                "title": {
+                    "description": "卡片标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "卡片绘图类型 pie line tatle",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.WebInfoOutput": {
+            "type": "object",
+            "properties": {
+                "content_type": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "login_list": {
+                    "type": "string"
+                },
+                "port_id": {
+                    "type": "integer"
+                },
+                "resource_list": {
+                    "type": "string"
+                },
+                "route_list": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
+                },
+                "start_url": {
+                    "type": "string"
+                },
+                "sub_domain": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "upload_list": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.WebTableBoxCard": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "description": "卡片头像",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "数据源",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.WebInfoOutput"
+                    }
+                },
+                "title": {
+                    "description": "卡片标题",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "卡片绘图类型 pie line tatle",
+                    "type": "string"
+                }
+            }
+        },
+        "middleware.Response": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "errmsg": {
+                    "type": "string"
+                },
+                "errno": {
+                    "type": "integer"
+                },
+                "stack": {
+                    "type": "object"
+                },
+                "trace_id": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
