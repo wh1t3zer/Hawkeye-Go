@@ -3,7 +3,7 @@ package lb
 import (
 	"fmt"
 
-	"github.com/wh1t3zer/Hawkeye/proxy/zookeeper"
+	"github.com/wh1t3zer/Hawkeye-Go/proxy/zookeeper"
 )
 
 // Observer 观察员

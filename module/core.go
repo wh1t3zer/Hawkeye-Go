@@ -12,7 +12,7 @@ import (
 
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/dao"
+	"github.com/wh1t3zer/Hawkeye-Go/dao"
 )
 
 // Executor ...

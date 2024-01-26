@@ -7,7 +7,7 @@ import (
 
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // RecoveryMiddleware 捕获所有panic，并且返回错误信息

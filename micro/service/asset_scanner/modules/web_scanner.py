@@ -47,7 +47,7 @@ class WebScanner:
         host可以是域名或者是IP,
         端口是80、443的直接舍去
         """
-        self.target = host if port in [80, 443] else '{}:{}'.format(host, port)  # 172.31.50.252:8080 or zan71.com
+        self.target = host if port in [80, 443] else '{}:{}'.format(host, port)
         self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0'}
         self.start_url = self.get_start_url()          # 确保携带协议的target, 默认http
         # self.login_pattern = re.compile('https?://.*{}.*signin|https?://.*{}.*login'.format(self.target, self.target))                          # 抓取登录页面链接

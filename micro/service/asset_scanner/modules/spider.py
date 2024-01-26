@@ -170,4 +170,4 @@ if __name__ == "__main__":
     ws = WebSpider()
     # ws.test("https://antiy.cn/", "antiy.cn")
     # ws.test("https://cnblogs.com/", "cnblogs.com")
-    ws.test("http://172.31.50.252:8081/", ip="172.31.50.252")
+    ws.test("http://127.0.0.1:8081/", ip="127.0.0.1")

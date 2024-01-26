@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"testing"
 
-	unit "github.com/wh1t3zer/Hawkeye/micro/handler"
-	pb "github.com/wh1t3zer/Hawkeye/micro/proto/grpc"
+	unit "github.com/wh1t3zer/Hawkeye-Go/micro/handler"
+	pb "github.com/wh1t3zer/Hawkeye-Go/micro/proto/grpc"
 	"google.golang.org/grpc"
 )
 
 func TestArith(t *testing.T) {
 	// 1.连接注册中心获取服务节点
-	user := unit.InitUser("test_python3", "172.31.50.249:8500")
+	user := unit.InitUser("test_python3", "127.0.0.1:8500")
 	if err := user.RegistryConn(); err != nil {
 		t.Errorf("Failed conn Registry center, info: %v\n", err)
 		return

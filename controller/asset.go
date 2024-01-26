@@ -5,9 +5,9 @@ import (
 
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/dao"
-	"github.com/wh1t3zer/Hawkeye/dto"
-	"github.com/wh1t3zer/Hawkeye/middleware"
+	"github.com/wh1t3zer/Hawkeye-Go/dao"
+	"github.com/wh1t3zer/Hawkeye-Go/dto"
+	"github.com/wh1t3zer/Hawkeye-Go/middleware"
 )
 
 // AssetController ...
@@ -129,11 +129,11 @@ func (assetctl *AssetController) AssetDetail(c *gin.Context) {
 	}
 	out := &dto.AssetDetailOutput{
 		Trap:        &dto.TrapInfo{}, // &dto.TrapInfo{Name: trapPlugin.Name, Verify: trap.Verify},
-		AssetOutput: &dto.AssetInfoCard{Title: "Asset Info", Type: "info", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif"},
-		Box1:        &dto.ChartBoxCard{Title: "Service Info", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "pie", Series: []dto.ChartSeries{}},
-		Box2:        &dto.ChartBoxCard{Title: "Vul Type", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "pie", Series: []dto.ChartSeries{}},
-		WebList:     &dto.WebTableBoxCard{Title: "Web info", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "web", Series: []dto.WebInfoOutput{}},
-		VulList:     &dto.VulTableBoxCard{Title: "Vulnerability", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "table", Series: []dto.VulInfoOutput{}},
+		AssetOutput: &dto.AssetInfoCard{Title: "Asset Info", Type: "info", Image: "http://localhost:9527/img/domain.png"},
+		Box1:        &dto.ChartBoxCard{Title: "Service Info", Image: "http://localhost:9527/img/service.png", Type: "pie", Series: []dto.ChartSeries{}},
+		Box2:        &dto.ChartBoxCard{Title: "Vul Type", Image: "http://localhost:9527/img/vul.png", Type: "pie", Series: []dto.ChartSeries{}},
+		WebList:     &dto.WebTableBoxCard{Title: "Web info", Image: "http://localhost:9527/img/domain.png", Type: "web", Series: []dto.WebInfoOutput{}},
+		VulList:     &dto.VulTableBoxCard{Title: "Vulnerability", Image: "http://localhost:9527/img/hack.png", Type: "table", Series: []dto.VulInfoOutput{}},
 	}
 
 	// 0.先找主体信息

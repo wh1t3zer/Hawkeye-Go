@@ -2,7 +2,7 @@ package dto
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // TaskListOutput ...

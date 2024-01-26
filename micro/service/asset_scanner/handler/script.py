@@ -4,13 +4,13 @@
 # 3、对[域名]的进行域名字典爆破、whois查询
 import os
 import re
-from modules.domain_brute import resolution, whois_query, DomainBrute
-from modules.pynmap import NmapScanner
-from modules.verify import Pocsuite
+from micro.service.asset_scanner.modules.domain_brute import resolution, whois_query, DomainBrute
+from micro.service.asset_scanner.modules.pynmap import NmapScanner
+from micro.service.asset_scanner.modules.verify import Pocsuite
 import json
-from modules.web_scanner import WebScanner
-from modules.trap_scanner import TrapScanner
-from modules.ip_discern import getipinfo
+from micro.service.asset_scanner.modules.web_scanner import WebScanner
+from micro.service.asset_scanner.modules.trap_scanner import TrapScanner
+from micro.service.asset_scanner.modules.ip_discern import getipinfo
 from random import sample
 from string import digits, ascii_lowercase
 from micro.handler.common import LOCAL_RESULR_DIR
@@ -19,7 +19,7 @@ from micro.handler.common import LOCAL_RESULR_DIR
 class AssetScanner:
     '''
     单个主机的扫描(不能输入端口及协议)
-    Example: 192.168.1.11 or zan71.com.cn
+    Example: 192.168.1.11
     '''
     def __init__(
         self, domain='', ip='', scan_port='22,25,53,80,3306,5900,6379,7001,8080,8081,9000,27017', domain_dict=['www', 'mail', 'smtp'],
@@ -151,7 +151,7 @@ class AssetScanner:
 
 
 if __name__ == "__main__":
-    ass = AssetScanner(domain='zan71.com')
+    ass = AssetScanner(domain='127.0.0.1')
     resp = ass.Run()
     resp = json.dumps(resp)
     print(resp)
@@ -161,7 +161,7 @@ result = {
     "domain": "",                 # add
     "sub_domain": "",             # add
     "hostname":"",
-    "host":"172.31.50.254",
+    "host":"127.0.0.1",
     "hostname_type":"",
     "vendor":"QEMU Virtual NIC",
     "mac":"52:54:00:AD:67:27",

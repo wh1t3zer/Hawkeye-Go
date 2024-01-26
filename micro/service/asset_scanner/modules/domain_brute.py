@@ -31,7 +31,7 @@ def resolution(domain):
     except Exception as e:
         print('[*] Failed reslove domain({})'.format(e))
         return False
-    return result  # {'smtp.zan71.com': ['47.92.255.39']}
+    return result 
 
 
 def whois_query(domain) -> dict:
@@ -73,7 +73,7 @@ class DomainBrute:
                 continue
             result.append(resp)
         print("[+] Domain Brute Finished....")
-        return result  # [{'mail.zan71.com': ['47.92.255.39']}, {'smtp.zan71.com': ['47.92.255.39']}]
+        return result  
 
 
 if __name__ == "__main__":
@@ -82,11 +82,11 @@ if __name__ == "__main__":
     # print(resolution('antiy.cn'))
 
     # 测试域名字典爆破
-    # db = DomainBrute('zan71.com', ['mail', 'www', 'cdn', 'smtp'])
+    # db = DomainBrute(['mail', 'www', 'cdn', 'smtp'])
     # resp = db.resolver()
     # print(resp)
     # 测试whois查询
-    # data = whois_query('zan71333333.com')
+    # data = whois_query('')
     # if data:
     #     print(data)
     aa = ['DNS7.HICHINA.COM', 'DNS8.HICHINA.COM']
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 '''
 {
     'creationDate': '2020-03-06T09:55:08Z',
-    'domainName': 'ZAN71.COM',
+    'domainName': '',
     'domainStatus': 'ok https://icann.org/epp#ok',
     'nameServer': ['DNS7.HICHINA.COM', 'DNS8.HICHINA.COM'],
     'registrar': 'Alibaba Cloud Computing (Beijing) Co., Ltd.',

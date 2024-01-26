@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/e421083458/golang_common/lib"
-	"github.com/wh1t3zer/Hawkeye/dao"
-	pb "github.com/wh1t3zer/Hawkeye/micro/proto/grpc"
+	"github.com/wh1t3zer/Hawkeye-Go/dao"
+	pb "github.com/wh1t3zer/Hawkeye-Go/micro/proto/grpc"
 	"google.golang.org/grpc"
 )
 

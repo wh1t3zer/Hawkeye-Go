@@ -1,7 +1,7 @@
 import re
 import os
 import sys
-sys.path.append('/root/go/src/github.com/wh1t3zer/Hawkeye')
+sys.path.append('/Users/wh1t3zer/Public/Hawkeye/micro/')
 import base64
 from micro.service.asset_scanner.settings import RESOURCE_ADDR, TROJANMQ_ADDR, REGISTRY_ADDR
 # from settings import RESOURCE_ADDR, TROJANMQ_ADDR, REGISTRY_ADDR
@@ -123,6 +123,6 @@ if __name__ == "__main__":
     p = Pocsuite(target=targs, vul_id="0001", poc_content="impoirt eee", asset_id="9527")  # target: str, pocs: list, asset_id: str = None, command: str = None
     print(p.pocs)
     # print(p.Verify(True))
-    # {'/root/go/src/github.com/wh1t3zer/Hawkeye/micro/service/asset_scanner/poc_plugins/Flink_201111_Unauth_RCE.py',
-    # '/root/go/src/github.com/wh1t3zer/Hawkeye/micro/service/asset_scanner/poc_plugins/Weblogic_171023_wls_CVE_2017_10271_RCE.py'}
-    # {/root/go/src/github.com/wh1t3zer/Hawkeye/micro/service/asset_scanner/poc_plugins/0001.py'}
+    # {'/root/go/src/github.com/wh1t3zer/Hawkeye-Go/micro/service/asset_scanner/poc_plugins/Flink_201111_Unauth_RCE.py',
+    # '/root/go/src/github.com/wh1t3zer/Hawkeye-Go/micro/service/asset_scanner/poc_plugins/Weblogic_171023_wls_CVE_2017_10271_RCE.py'}
+    # {/root/go/src/github.com/wh1t3zer/Hawkeye-Go/micro/service/asset_scanner/poc_plugins/0001.py'}

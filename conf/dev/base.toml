@@ -11,7 +11,7 @@
     max_header_bytes = 20               # 最大的header大小，二进制位长度
     allow_ip = [                        # 白名单ip列表
         "127.0.0.1",
-        "192.168.1.1",
+        "192.168.10.102",
         "10.10.240.80"                  # 添加内网IP
     ]
 
@@ -32,14 +32,14 @@
         color = false
 
 [cluster]
-    cluster_ip="192.168.1.1"
+    cluster_ip="192.168.10.102"
     cluster_port="8700"
     cluster_ssl_port="4880"
 
 [swagger]
     title="Hawkeye swagger API"
     desc="This is a sample server celler server."
-    host="192.168.1.1:8700"
+    host="192.168.10.102:8700"
     base_path=""
     version="1.0"
     # schemes="http,https"

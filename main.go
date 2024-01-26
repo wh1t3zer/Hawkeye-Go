@@ -6,7 +6,7 @@ import (
 	"syscall"
 
 	"github.com/e421083458/golang_common/lib"
-	"github.com/wh1t3zer/Hawkeye/router"
+	"github.com/wh1t3zer/Hawkeye-Go/router"
 )
 
 func main() {

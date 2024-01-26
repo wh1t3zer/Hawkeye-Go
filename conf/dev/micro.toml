@@ -1,8 +1,8 @@
 # This is micro-service config
 
 [consul]
-    registry_address="172.31.50.249:8500"  # 服务注册中心地址
+    registry_address="192.168.10.102:8500"  # 服务注册中心地址
 
 [aum]
-    name="aquaman"  # 服务名
+    name="asset_scanner"  # 服务名
     

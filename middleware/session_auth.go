@@ -2,10 +2,9 @@ package middleware
 
 import (
 	"errors"
-
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // SessionAuthMiddleware ...

@@ -8,8 +8,8 @@ import (
 	"github.com/e421083458/golang_common/lib"
 	"github.com/e421083458/gorm"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/dto"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/dto"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // TaskInfo ...
@@ -88,22 +88,22 @@ func (t *TaskInfo) TaskStatistics(c *gin.Context) *dto.TaskDashboardOutput {
 	out := &dto.TaskDashboardOutput{
 		PanelGroup: &dto.PanelGroupData{},
 		Box1: &dto.ChartBoxCard{
-			Title: "Hardware", Image: "https://zan71.com/cdn-img/icon/avatar/tx1.gif", Type: "pie", Series: []dto.ChartSeries{},
+			Title: "Hardware", Image: "http://localhost:9527/img/service.png", Type: "pie", Series: []dto.ChartSeries{},
 		},
 		Box2: &dto.ChartBoxCard{
-			Title: "Software", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "pie", Series: []dto.ChartSeries{},
+			Title: "Software", Image: "http://localhost:9527/img/domain.png", Type: "pie", Series: []dto.ChartSeries{},
 		},
 		Box3: &dto.ChartBoxCard{
-			Title: "SubDomain", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "pie", Series: []dto.ChartSeries{},
+			Title: "SubDomain", Image: "http://localhost:9527/img/vul.png", Type: "pie", Series: []dto.ChartSeries{},
 		},
 		Box4: &dto.ChartBoxCard{
-			Title: "Vul Type", Image: "https://zan71.com/cdn-img/icon/avatar/tx1.gif", Type: "pie", Series: []dto.ChartSeries{},
+			Title: "Vul Type", Image: "http://localhost:9527/img/hack.png", Type: "pie", Series: []dto.ChartSeries{},
 		},
 		Box5: &dto.TableBoxCard{
-			Title: "Latest Vul", Image: "https://zan71.com/cdn-img/icon/avatar/tx1.gif", Type: "table", Series: []dto.VulInfoOutput{},
+			Title: "Latest Vul", Image: "http://localhost:9527/img/vul.png", Type: "table", Series: []dto.VulInfoOutput{},
 		},
 		Box6: &dto.ChartBoxCard{
-			Title: "Web Site", Image: "https://zan71.com/cdn-img/icon/avatar/tx.gif", Type: "line", Series: []dto.ChartSeries{},
+			Title: "Web Site", Image: "http://localhost:9527/img/domain.png", Type: "line", Series: []dto.ChartSeries{},
 		},
 		Status: taskinfo.Status, Percent: taskinfo.Percent,
 	}

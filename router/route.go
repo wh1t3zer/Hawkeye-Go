@@ -6,10 +6,10 @@ import (
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/controller"
-	"github.com/wh1t3zer/Hawkeye/docs"
+	"github.com/wh1t3zer/Hawkeye-Go/controller"
+	"github.com/wh1t3zer/Hawkeye-Go/docs"
 
-	"github.com/wh1t3zer/Hawkeye/middleware"
+	"github.com/wh1t3zer/Hawkeye-Go/middleware"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -62,7 +62,7 @@ func InitRouter(middlewares ...gin.HandlerFunc) *gin.Engine {
 		sessions.Sessions("mysession", store),
 		middleware.RecoveryMiddleware(),
 		middleware.RequestLog(),
-		middleware.SessionAuthMiddleware(),
+		// middleware.SessionAuthMiddleware(),
 		middleware.TranslationMiddleware(),
 	)
 	{
@@ -75,7 +75,7 @@ func InitRouter(middlewares ...gin.HandlerFunc) *gin.Engine {
 		sessions.Sessions("mysession", store),
 		middleware.RecoveryMiddleware(),
 		middleware.RequestLog(),
-		middleware.SessionAuthMiddleware(),
+		// middleware.SessionAuthMiddleware(),
 		middleware.TranslationMiddleware(),
 	)
 	{

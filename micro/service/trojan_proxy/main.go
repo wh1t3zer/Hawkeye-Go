@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"github.com/garyburd/redigo/redis"
-	"github.com/wh1t3zer/Hawkeye/micro/handler"
-	"github.com/wh1t3zer/Hawkeye/micro/proto/rpcapi"
+	"github.com/wh1t3zer/Hawkeye-Go/micro/handler"
+	"github.com/wh1t3zer/Hawkeye-Go/micro/proto/rpcapi"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry"
 	"github.com/micro/go-plugins/registry/consul"

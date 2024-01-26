@@ -1,13 +1,13 @@
 import sys
-sys.path.append("/root/go/src/github.com/wh1t3zer/Hawkeye")
+sys.path.append("/Users/wh1t3zer/Public/Hawkeye/micro")
 import re
 import time
 from concurrent import futures
 import argparse
 from argparse import RawTextHelpFormatter
-from micro.proto.grpc.arith_pb2 import ArithResponse
-from micro.proto.grpc.arith_pb2_grpc import ArithServicer, add_ArithServicer_to_server, grpc
-from micro.handler.grpc_registry import GRPCServiceBase
+from proto.grpc.arith_pb2 import ArithResponse
+from proto.grpc.arith_pb2_grpc import ArithServicer, add_ArithServicer_to_server, grpc
+from handler.grpc_registry import GRPCServiceBase
 
 
 class Arither(ArithServicer):

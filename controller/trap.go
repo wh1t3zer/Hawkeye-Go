@@ -3,9 +3,9 @@ package controller
 import (
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/dao"
-	"github.com/wh1t3zer/Hawkeye/dto"
-	"github.com/wh1t3zer/Hawkeye/middleware"
+	"github.com/wh1t3zer/Hawkeye-Go/dao"
+	"github.com/wh1t3zer/Hawkeye-Go/dto"
+	"github.com/wh1t3zer/Hawkeye-Go/middleware"
 )
 
 // TrapController 蜜罐识别插件

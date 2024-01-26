@@ -6,13 +6,13 @@ from micro.proto.grpc.aquaman_pb2_grpc import add_VulServicer_to_server, VulServ
 from micro.proto.grpc.aquaman_pb2_grpc import add_HostServicer_to_server, HostServicer
 from micro.proto.grpc.aquaman_pb2_grpc import add_WebScrapServicer_to_server, WebScrapServicer
 from micro.handler.grpc_registry import GRPCServiceBase
-from modules.verify import Pocsuite
-from modules.domain_brute import resolution, DomainBrute, whois_query
-from modules.ip_discern import getipinfo
-from modules.pynmap import NmapScanner
-from modules.web_scanner import WebScanner
-from modules.hydra_brute import HydraScanner
-from modules.trap_scanner import TrapScanner
+from micro.service.asset_scanner.modules.verify import Pocsuite
+from micro.service.asset_scanner.modules.domain_brute import resolution, DomainBrute, whois_query
+from micro.service.asset_scanner.modules.ip_discern import getipinfo
+from micro.service.asset_scanner.modules.pynmap import NmapScanner
+from micro.service.asset_scanner.modules.web_scanner import WebScanner
+from micro.service.asset_scanner.modules.hydra_brute import HydraScanner
+from micro.service.asset_scanner.modules.trap_scanner import TrapScanner
 
 
 class HostUtils(HostServicer):
@@ -40,7 +40,6 @@ class HostUtils(HostServicer):
                 'version': item['version'], 'extrainfo': item['extrainfo'], 'conf': item['conf'], 'cpe': item['cpe'],
             })
         print(resp)
-        # return DetlResponse(os="zan71.com", vendor="linux", array=[])
         return aquaman_pb2.DetlResponse(os=resp["os"], vendor=resp["vendor"], array=array)
 
     def Alive(self, request, context):
@@ -93,7 +92,8 @@ class WebUtils(WebScrapServicer):
 class VulUtils(VulServicer):
     def Hydra(self, request, context):
         print(request.service, request.args, request.target_list, request.username_list, request.password_list)
-        hs = HydraScanner(request.service, request.args, request.target_list, request.username_list, request.password_list)
+        hs = HydraScanner(request.service, request.args, request.target_list, request.username_list,
+                          request.password_list)
         array = hs.run()
         # 一个服务可能有多个权限信息
         result = []
@@ -130,7 +130,8 @@ class VulUtils(VulServicer):
         # print("Recv Data From Client, Data: ", re.sub(r"[\n\r\t]", ",", "{}".format(request)))
 
         # request.command
-        p = Pocsuite(target=request.target, vul_id=request.vul_id, poc_content=request.poc_content, asset_id=request.asset_id)
+        p = Pocsuite(target=request.target, vul_id=request.vul_id, poc_content=request.poc_content,
+                     asset_id=request.asset_id)
         # p = Pocsuite(request.target, request.poc_plugins, request.asset_id)
         resp = p.Verify(request.exploit)
 

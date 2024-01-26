@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from micro.proto.grpc import aquaman_pb2 as aquaman__pb2
+import micro.proto.grpc.aquaman_pb2 as aquaman__pb2
 
 
 class DomainStub(object):
@@ -75,6 +75,7 @@ class Domain(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -83,7 +84,7 @@ class Domain(object):
             aquaman__pb2.ResolvRequest.SerializeToString,
             aquaman__pb2.ResolvResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Analysis(request,
@@ -91,6 +92,7 @@ class Domain(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -99,7 +101,7 @@ class Domain(object):
             aquaman__pb2.AnlsRequest.SerializeToString,
             aquaman__pb2.AnlsResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class HostStub(object):
@@ -189,6 +191,7 @@ class Host(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -197,7 +200,7 @@ class Host(object):
             aquaman__pb2.LocRequest.SerializeToString,
             aquaman__pb2.LocResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Alive(request,
@@ -205,6 +208,7 @@ class Host(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -213,7 +217,7 @@ class Host(object):
             aquaman__pb2.AlvRequest.SerializeToString,
             aquaman__pb2.AlvResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Detail(request,
@@ -221,6 +225,7 @@ class Host(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -229,7 +234,7 @@ class Host(object):
             aquaman__pb2.DetlRequest.SerializeToString,
             aquaman__pb2.DetlResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class WebScrapStub(object):
@@ -285,6 +290,7 @@ class WebScrap(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -293,7 +299,7 @@ class WebScrap(object):
             aquaman__pb2.SpiRequest.SerializeToString,
             aquaman__pb2.SpiResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
 class VulStub(object):
@@ -383,6 +389,7 @@ class Vul(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -391,7 +398,7 @@ class Vul(object):
             aquaman__pb2.PocRequest.SerializeToString,
             aquaman__pb2.PocResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Hydra(request,
@@ -399,6 +406,7 @@ class Vul(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -407,7 +415,7 @@ class Vul(object):
             aquaman__pb2.AuthRequest.SerializeToString,
             aquaman__pb2.AuthResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def Trap(request,
@@ -415,6 +423,7 @@ class Vul(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -423,4 +432,4 @@ class Vul(object):
             aquaman__pb2.TrapRequest.SerializeToString,
             aquaman__pb2.TrapResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

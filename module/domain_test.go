@@ -5,15 +5,15 @@ import (
 	"fmt"
 	"testing"
 
-	unit "github.com/wh1t3zer/Hawkeye/micro/handler"
-	pb "github.com/wh1t3zer/Hawkeye/micro/proto/grpc"
+	unit "github.com/wh1t3zer/Hawkeye-Go/micro/handler"
+	pb "github.com/wh1t3zer/Hawkeye-Go/micro/proto/grpc"
 	"google.golang.org/grpc"
 )
 
 // TestVerify Poc 漏洞验证及漏洞扫描
 func TestVerify(t *testing.T) {
 	// 1.连接注册中心获取服务节点
-	user := unit.InitUser("aquaman", "172.31.50.249:8500")
+	user := unit.InitUser("aquaman", "127.0.0.1:8500")
 	if err := user.RegistryConn(); err != nil {
 		t.Errorf("Failed conn Registry center, info: %v\n", err)
 		return

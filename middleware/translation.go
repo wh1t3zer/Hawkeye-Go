@@ -9,7 +9,7 @@ import (
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"
 	ut "github.com/go-playground/universal-translator"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 	"gopkg.in/go-playground/validator.v9"
 	en_translations "gopkg.in/go-playground/validator.v9/translations/en"
 	zh_translations "gopkg.in/go-playground/validator.v9/translations/zh"

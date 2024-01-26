@@ -3,9 +3,9 @@ package controller
 import (
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/dto"
-	"github.com/wh1t3zer/Hawkeye/middleware"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/dto"
+	"github.com/wh1t3zer/Hawkeye-Go/middleware"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // OauthController ...

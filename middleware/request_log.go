@@ -7,7 +7,7 @@ import (
 
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
-	"github.com/wh1t3zer/Hawkeye/utils"
+	"github.com/wh1t3zer/Hawkeye-Go/utils"
 )
 
 // RequestInLog 请求进入日志

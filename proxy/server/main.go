@@ -13,7 +13,7 @@ import (
 
 	"strconv"
 
-	"github.com/wh1t3zer/Hawkeye/proxy/lb"
+	"github.com/wh1t3zer/Hawkeye-Go/proxy/lb"
 )
 
 var (

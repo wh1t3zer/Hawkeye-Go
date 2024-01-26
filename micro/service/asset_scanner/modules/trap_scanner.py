@@ -6,7 +6,7 @@ link = "https://mp.weixin.qq.com/s?__biz=Mzk0NzE4MDE2NA==&mid=2247483908&idx=1&s
 '''
 import os
 import sys
-sys.path.append('/root/go/src/github.com/wh1t3zer/Hawkeye')
+sys.path.append('/Users/wh1t3zer/Public/Hawkeye/micro/')
 from micro.handler import common
 from pocsuite3.api import init_pocsuite, start_pocsuite, get_results
 
@@ -56,6 +56,6 @@ class TrapScanner:
 
 
 if __name__ == "__main__":
-    ts = TrapScanner(['172.31.50.249:11211'], plugin_list=None)
+    ts = TrapScanner(['127.0.0.1:11211'], plugin_list=None)
     aa = ts.run()
     print(aa)

@@ -43,6 +43,7 @@ func (r *Instance) Update() error {
 func (r *Instance) GetNodeByRamdom() (node *registry.Node, err error) {
 	next := selector.Random(r.Services)
 	node, err = next()
+	fmt.Println(node)
 	if err != nil {
 		fmt.Printf("Failed Get Next Node, Info: %v\n", err)
 		return
@@ -65,6 +66,7 @@ func (r *Instance) GetNodeByRoundRobin() (node *registry.Node, err error) {
 func NewDefaultConn(name, addr string) (conn *grpc.ClientConn, err error) {
 	// 1.连接注册中心获取服务节点
 	user, err := NewInstance(name, addr)
+	fmt.Println(user)
 	if err != nil {
 		fmt.Printf("Failed conn Registry center, info: %v\n", err)
 		return

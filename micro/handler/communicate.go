@@ -5,7 +5,7 @@ import (
 	"context"
 	"os/exec"
 
-	"github.com/wh1t3zer/Hawkeye/micro/proto/model"
+	"github.com/wh1t3zer/Hawkeye-Go/micro/proto/model"
 )
 
 // Victim ...
