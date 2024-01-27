@@ -135,17 +135,17 @@ func (exec *Executor) Run(c *gin.Context) {
 				exec.step <- "漏洞扫描Finished"
 			}
 			// 1.3 执行蜜罐识别
-			// if exec.TrapScan > 0 {
-			// 	exec.step <- "蜜罐识别Starting"
-			// 	exec.TrapScanHandler(asset.ID, array, host, c)
-			// 	exec.step <- "蜜罐识别Finished"
-			// }
-			// // 1.4 执行权限扫描
-			// if exec.AuthScan > 0 {
-			// 	exec.step <- "权限扫描Starting"
-			// 	exec.AuthScanHandler(asset.ID, array, host, c)
-			// 	exec.step <- "权限扫描Finished"
-			// }
+			if exec.TrapScan > 0 {
+				exec.step <- "蜜罐识别Starting"
+				exec.TrapScanHandler(asset.ID, array, host, c)
+				exec.step <- "蜜罐识别Finished"
+			}
+			// 1.4 执行权限扫描
+			if exec.AuthScan > 0 {
+				exec.step <- "权限扫描Starting"
+				exec.AuthScanHandler(asset.ID, array, host, c)
+				exec.step <- "权限扫描Finished"
+			}
 			wg.Done()
 		}(asset)
 

@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"time"
 	"github.com/e421083458/gorm"
 	"github.com/gin-gonic/gin"
 	"github.com/wh1t3zer/Hawkeye-Go/dto"
@@ -8,17 +9,29 @@ import (
 )
 
 // RuleInfo ...
-type RuleInfo struct {
-	ID        int64  `json:"id" gorm:"primary_key"`
-	AssetID   int64  `json:"asset_id" gorm:"column:asset_id" description:"资产ID"`
-	Port      string `json:"port" gorm:"column:port" description:"端口"`
-	Name      string `json:"name" gorm:"column:name" description:"服务名"`
-	State     string `json:"state" gorm:"column:state" description:"状态"`
-	Product   string `json:"product" gorm:"column:product" description:"应用"`
-	Version   string `json:"version" gorm:"column:version" description:"版本"`
-	Extrainfo string `json:"extrainfo" gorm:"column:extrainfo" description:"服务名"`
-	Conf      string `json:"conf" gorm:"column:conf" description:"未知"`
-	Cpe       string `json:"cpe" gorm:"column:cpe" description:"指纹"`
+// type RuleInfo struct {
+// 	ID        int64  `json:"id" gorm:"primary_key"`
+// 	AssetID   int64  `json:"asset_id" gorm:"column:asset_id" description:"资产ID"`
+// 	Port      string `json:"port" gorm:"column:port" description:"端口"`
+// 	Name      string `json:"name" gorm:"column:name" description:"服务名"`
+// 	State     string `json:"state" gorm:"column:state" description:"状态"`
+// 	Product   string `json:"product" gorm:"column:product" description:"应用"`
+// 	Version   string `json:"version" gorm:"column:version" description:"版本"`
+// 	Extrainfo string `json:"extrainfo" gorm:"column:extrainfo" description:"服务名"`
+// 	Conf      string `json:"conf" gorm:"column:conf" description:"未知"`
+// 	Cpe       string `json:"cpe" gorm:"column:cpe" description:"指纹"`
+// }
+
+//ruleinfo ...
+type RuleInfo struct{
+	ID             int64  `json:"id" gorm:"primary_key"`
+	Trojan_cmd     string  `json:"trojan_cmd" gorm:"column:asset_id" description:"木马"`
+	Port_list      int64 `json:"port_list" gorm:"column:port_list" description:"端口字典"`
+	Domain_dict    string `json:"domain_dict" gorm:"column:domain_dict" description:"域名字典"`
+	User_dict      string `json:"user_dict" gorm:"column:user_dict" description:"用户名字典"`
+	Passwd_dict    string `json:"passwd_dict" gorm:"column:passwd_dict" description:"密码字典"`
+	Create_at      time.Time `json:"create_at" gorm:"column:create_at" description:"创建时间"`
+
 }
 
 // TableName ...

@@ -52,6 +52,12 @@ func (t *PocPlugin) Save(c *gin.Context, tx *gorm.DB) error {
 	return tx.SetCtx(utils.GetGinTraceContext(c)).Save(t).Error
 }
 
+// Delete ...
+func (t *PocPlugin) Delete(c *gin.Context, tx *gorm.DB) error {
+	err := tx.SetCtx(utils.GetGinTraceContext(c)).Where("id=?", t.ID).Delete(t).Error
+	return err
+}
+
 // AllRecord 所有记录, 除去被删除之外(接受有ID或无ID)
 func (t *PocPlugin) AllRecord(c *gin.Context, tx *gorm.DB) ([]PocPlugin, int64, error) {
 	var list []PocPlugin
@@ -70,3 +76,4 @@ func (t *PocPlugin) AllRecord(c *gin.Context, tx *gorm.DB) ([]PocPlugin, int64, 
 	}
 	return list, count, nil
 }
+

@@ -15,11 +15,11 @@ type TrapController struct{}
 func TrapRegister(router *gin.RouterGroup) {
 	ctl := TrapController{}
 	// 插件
-	router.GET("/plugin/list", ctl.PluginList)
-	router.GET("/plugin/info", ctl.PluginInfo)
-	router.POST("/plugin/add", ctl.PluginAdd)
-	router.PUT("/plugin/update", ctl.PluginUpdate)
-	router.DELETE("/plugin/delete", ctl.PluginDelete)
+	router.GET("/plugin/list", ctl.TrapPluginList)
+	router.GET("/plugin/info", ctl.TrapPluginInfo)
+	router.POST("/plugin/add", ctl.TrapPluginAdd)
+	router.PUT("/plugin/update", ctl.TrapPluginUpdate)
+	router.DELETE("/plugin/delete", ctl.TrapPluginDelete)
 }
 
 // PluginList godoc
@@ -34,7 +34,7 @@ func TrapRegister(router *gin.RouterGroup) {
 // @Param page query string true "页码"
 // @Success 200 {object} middleware.Response{data=dto.TrapPluginListOutput} "success"
 // @Router /trap/plugin/list [get]
-func (admin *TrapController) PluginList(c *gin.Context) {
+func (admin *TrapController) TrapPluginList(c *gin.Context) {
 	params := &dto.PublicListInput{}
 	if err := params.GetValidParams(c); err != nil {
 		middleware.ResponseError(c, 2001, err)
@@ -74,7 +74,7 @@ func (admin *TrapController) PluginList(c *gin.Context) {
 // @Param id query string true "任务ID"
 // @Success 200 {object} middleware.Response{data=dao.TaskInfo} "success"
 // @Router /trap/plugin/info [get]
-func (admin *TrapController) PluginInfo(c *gin.Context) {
+func (admin *TrapController) TrapPluginInfo(c *gin.Context) {
 	params := &dto.PublicIDInput{}
 	if err := params.GetValidParams(c); err != nil {
 		middleware.ResponseError(c, 2001, err)
@@ -100,7 +100,7 @@ func (admin *TrapController) PluginInfo(c *gin.Context) {
 // @Param id query string true "任务ID"
 // @Success 200 {object} middleware.Response{data=string} "success"
 // @Router /trap/plugin/delete [delete]
-func (admin *TrapController) PluginDelete(c *gin.Context) {
+func (admin *TrapController) TrapPluginDelete(c *gin.Context) {
 	params := &dto.PublicIDInput{}
 	if err := params.GetValidParams(c); err != nil {
 		middleware.ResponseError(c, 2001, err)
@@ -113,7 +113,7 @@ func (admin *TrapController) PluginDelete(c *gin.Context) {
 		return
 	}
 	info.IsDelete = 1
-	if err := info.Save(c, lib.GORMDefaultPool); err != nil {
+	if err := info.Delete(c, lib.GORMDefaultPool); err != nil {
 		middleware.ResponseError(c, 2003, err)
 		return
 	}
@@ -131,7 +131,7 @@ func (admin *TrapController) PluginDelete(c *gin.Context) {
 // @Param body body dto.TrapPluginAddInput true "body"
 // @Success 200 {object} middleware.Response{data=string} "success"
 // @Router /trap/plugin/add [post]
-func (admin *TrapController) PluginAdd(c *gin.Context) {
+func (admin *TrapController) TrapPluginAdd(c *gin.Context) {
 	params := &dto.TrapPluginAddInput{}
 	if err := params.GetValidParams(c); err != nil {
 		middleware.ResponseError(c, 2001, err)
@@ -160,7 +160,7 @@ func (admin *TrapController) PluginAdd(c *gin.Context) {
 // @Param body body dto.TrapPluginUpdateInput true "body"
 // @Success 200 {object} middleware.Response{data=string} "success"
 // @Router /trap/plugin/update [put]
-func (admin *TrapController) PluginUpdate(c *gin.Context) {
+func (admin *TrapController) TrapPluginUpdate(c *gin.Context) {
 	params := &dto.TrapPluginUpdateInput{}
 	if err := params.GetValidParams(c); err != nil {
 		middleware.ResponseError(c, 2001, err)

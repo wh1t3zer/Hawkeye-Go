@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/gin"
 	"github.com/wh1t3zer/Hawkeye-Go/dao"
@@ -22,6 +21,8 @@ func AssetRegister(group *gin.RouterGroup) {
 	group.PUT("/update", ctl.AssetList)
 	group.POST("/add", ctl.AssetList)
 	group.DELETE("/delete", ctl.AssetDelete) // 删除资产
+	group.POST("/rule/add",ctl.RuleAdd)	// 增加规则
+	group.GET("/rule/list",ctl.AssetRuleList) //规则列表
 }
 
 // AssetList godoc
@@ -357,5 +358,61 @@ func (assetctl *AssetController) AssetUpdate(c *gin.Context) {
 		return
 	}
 	middleware.ResponseSuccess(c, "success")
+	return
+}
+
+
+// AddRule godoc
+// @Summary 规则添加
+// @Description 规则添加
+// @Tags 规则管理
+// @ID /asset/rule/add
+// @Accept  json
+// @Produce  json
+// @Param body body dto.AssetUpdateInput true "body"
+// @Success 200 {object} middleware.Response{data=string} "success"
+// @Router /asset/rule/add [add]
+func (rule *AssetController) RuleAdd(c *gin.Context) {
+	params := &dto.TaskRuleAddInput{}
+	if err := params.GetValidParams(c); err != nil {
+		middleware.ResponseError(c, 2001, err)
+		return
+	}
+	middleware.ResponseSuccess(c, "success")
+	return
+}
+
+
+
+// RuleInfo godoc
+// @Summary 规则列表
+// @Description 规则列表
+// @Tags 规则管理
+// @ID /asset/rule/list
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} middleware.Response{data=dto.AssetRuleInfoOutput} "success"
+// @Router /asset/rule/list [list]
+func (rule *AssetController) AssetRuleList(c *gin.Context) {
+	RuleInfo := &dao.RuleInfo{}
+	array := []dto.TaskRuleInfoOutput{}
+	list, _, _ := RuleInfo.AllRecord("",c, lib.GORMDefaultPool)
+	
+	for _, rule := range list{
+		array = append(array, dto.TaskRuleInfoOutput{
+			Port_list: rule.Port_list,
+		})
+		// output := &dto.TaskRuleInfoOutput{
+		// 	ID: rule.ID,
+		// 	Port_list: rule.Port_list,
+		// 	Domain_dict: rule.Domain_dict,
+		// 	User_dict: rule.User_dict,
+		// 	Passwd_dict: rule.Passwd_dict,
+		// 	CreatedAt: rule.Create_at.Format("2006-01-02 15:04:05"),
+		// }
+		fmt.Println(list)
+
+	}
+	middleware.ResponseSuccess(c,"")
 	return
 }

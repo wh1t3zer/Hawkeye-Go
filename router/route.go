@@ -88,7 +88,7 @@ func InitRouter(middlewares ...gin.HandlerFunc) *gin.Engine {
 		sessions.Sessions("mysession", store),
 		middleware.RecoveryMiddleware(),
 		middleware.RequestLog(),
-		middleware.SessionAuthMiddleware(),
+		// middleware.SessionAuthMiddleware(),
 		middleware.TranslationMiddleware(),
 	)
 	{

@@ -56,13 +56,13 @@ func (assetctl *DashboardController) DefaultDashboard(c *gin.Context) {
 		out := &dto.DashboardOutput{
 			PanelGroup: &dto.PanelGroupData{},
 			Box1: &dto.ChartBoxCard{
-				Title: "Hardware", Image: "http://localhost:9527/img/service.png", Type: "pie", Series: []dto.ChartSeries{},
+				Title: "AssetVendor", Image: "http://localhost:9527/img/service.png", Type: "pie", Series: []dto.ChartSeries{},
 			},
 			Box2: &dto.ChartBoxCard{
-				Title: "Software", Image: "http://localhost:9527/img/domain.png", Type: "pie", Series: []dto.ChartSeries{},
+				Title: "SubDoamin", Image: "http://localhost:9527/img/domain.png", Type: "pie", Series: []dto.ChartSeries{},
 			},
 			Box3: &dto.ChartBoxCard{
-				Title: "SubDomain", Image: "http://localhost:9527/img/vul.png", Type: "pie", Series: []dto.ChartSeries{},
+				Title: "Software", Image: "http://localhost:9527/img/vul.png", Type: "pie", Series: []dto.ChartSeries{},
 			},
 			Box4: &dto.ChartBoxCard{
 				Title: "Vul Type", Image: "http://localhost:9527/img/hack.png", Type: "pie", Series: []dto.ChartSeries{},
@@ -71,7 +71,7 @@ func (assetctl *DashboardController) DefaultDashboard(c *gin.Context) {
 				Title: "Latest Vul", Image: "http://localhost:9527/img/vul.png", Type: "table", Series: []dto.VulInfoOutput{},
 			},
 			Box6: &dto.ChartBoxCard{
-				Title: "Web Site", Image: "http://localhost:9527/img/domain.png", Type: "line", Series: []dto.ChartSeries{},
+				Title: "WebSite", Image: "http://localhost:9527/img/domain.png", Type: "line", Series: []dto.ChartSeries{},
 			},
 		}
 		// 1.查资产
