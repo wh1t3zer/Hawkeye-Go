@@ -26,7 +26,7 @@ import (
 type RuleInfo struct{
 	ID             int64  `json:"id" gorm:"primary_key"`
 	Trojan_cmd     string  `json:"trojan_cmd" gorm:"column:asset_id" description:"木马"`
-	Port_list      int64 `json:"port_list" gorm:"column:port_list" description:"端口字典"`
+	Port_list      string `json:"port_list" gorm:"column:port_list" description:"端口字典"`
 	Domain_dict    string `json:"domain_dict" gorm:"column:domain_dict" description:"域名字典"`
 	User_dict      string `json:"user_dict" gorm:"column:user_dict" description:"用户名字典"`
 	Passwd_dict    string `json:"passwd_dict" gorm:"column:passwd_dict" description:"密码字典"`

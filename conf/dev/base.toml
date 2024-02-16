@@ -32,7 +32,7 @@
         color = false
 
 [cluster]
-    cluster_ip="127.0.0.1"
+    cluster_ip="192.168.1.37"
     cluster_port="8700"
     cluster_ssl_port="4880"
 

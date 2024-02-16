@@ -127,8 +127,7 @@ func (admin *TaskController) TaskDelete(c *gin.Context) {
 		middleware.ResponseError(c, 2002, err)
 		return
 	}
-	info.IsDelete = 1
-	if err := info.Save(c, lib.GORMDefaultPool); err != nil {
+	if err := info.Delete(c, lib.GORMDefaultPool); err != nil {
 		middleware.ResponseError(c, 2003, err)
 		return
 	}

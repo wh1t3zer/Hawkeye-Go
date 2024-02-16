@@ -126,7 +126,7 @@ func InitRouter(middlewares ...gin.HandlerFunc) *gin.Engine {
 	trojanRouter.Use(
 		middleware.RecoveryMiddleware(),
 		middleware.RequestLog(),
-		// middleware.IPAuthMiddleware(),
+		middleware.IPAuthMiddleware(),
 		middleware.TranslationMiddleware(),
 	)
 	controller.TrojanRegister(trojanRouter)

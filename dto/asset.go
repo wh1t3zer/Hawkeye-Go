@@ -124,7 +124,7 @@ type AssetDetailOutput struct {
 // AssetRuleAddInput ...
 type TaskRuleAddInput struct {
 	ID         int64  `json:"id" form:"id" comment:"规则id" validate:"required"`
-	Port_list  int64  `json:"port_list" form:"port_list" comment:"端口字典" validate:""`
+	Port_list  string  `json:"port_list" form:"port_list" comment:"端口字典" validate:""`
 	Domain_dict string `json:"domain_dict" form:"domain_dict" comment:"域名字典" validate:"required"`
 	User_dict   string `json:"user_list" form:"user_dict" comment:"用户名字典" validate:"required"`
 	Passwd_dict string   `json:"passwd_dict" form:"passwd_dict" comment:"密码字段" validate:"required"`
@@ -133,7 +133,7 @@ type TaskRuleAddInput struct {
 // AssetRuleInfoOutput ...
 type TaskRuleInfoOutput struct {
 	ID         int64  `json:"id" form:"id" comment:"规则id" validate:"required"`
-	Port_list  int64  `json:"port_list" form:"port_list" comment:"端口字典" validate:""`
+	Port_list  string  `json:"port_list" form:"port_list" comment:"端口字典" validate:""`
 	Domain_dict string `json:"domain_dict" form:"domain_dict" comment:"域名字典" validate:"required"`
 	User_dict   string `json:"user_list" form:"user_dict" comment:"用户名字典" validate:"required"`
 	Passwd_dict string   `json:"passwd_dict" form:"passwd_dict" comment:"密码字段" validate:"required"`

@@ -51,6 +51,13 @@ func (t *TaskInfo) Save(c *gin.Context, tx *gorm.DB) error {
 	return nil
 }
 
+// Delete ...
+func (t *TaskInfo) Delete(c *gin.Context, tx *gorm.DB) error {
+	err := tx.SetCtx(utils.GetGinTraceContext(c)).Where("id=?", t.ID).Delete(t).Error
+	return err
+}
+
+
 // PageList 模糊分页查询
 func (t *TaskInfo) PageList(c *gin.Context, tx *gorm.DB, params *dto.PublicListInput) ([]TaskInfo, int64, error) {
 	var list []TaskInfo

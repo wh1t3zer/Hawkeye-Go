@@ -395,13 +395,14 @@ func (rule *AssetController) RuleAdd(c *gin.Context) {
 // @Router /asset/rule/list [list]
 func (rule *AssetController) AssetRuleList(c *gin.Context) {
 	RuleInfo := &dao.RuleInfo{}
-	array := []dto.TaskRuleInfoOutput{}
+	// array := []dto.TaskRuleInfoOutput{}
 	list, _, _ := RuleInfo.AllRecord("",c, lib.GORMDefaultPool)
-	
-	for _, rule := range list{
-		array = append(array, dto.TaskRuleInfoOutput{
-			Port_list: rule.Port_list,
-		})
+	fmt.Println("124")
+	fmt.Println(list)
+	// for _, rule := range list{
+		// array = append(array, dto.TaskRuleInfoOutput{
+		// 	Port_list: rule.Port_list,
+		// })
 		// output := &dto.TaskRuleInfoOutput{
 		// 	ID: rule.ID,
 		// 	Port_list: rule.Port_list,
@@ -410,9 +411,9 @@ func (rule *AssetController) AssetRuleList(c *gin.Context) {
 		// 	Passwd_dict: rule.Passwd_dict,
 		// 	CreatedAt: rule.Create_at.Format("2006-01-02 15:04:05"),
 		// }
-		fmt.Println(list)
 
-	}
-	middleware.ResponseSuccess(c,"")
+
+	//}
+	middleware.ResponseSuccess(c,list)
 	return
 }
